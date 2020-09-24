@@ -16,11 +16,13 @@ document.getElementById('generate').addEventListener('click', performAction);
 
 
 /* Function called by event listener */
-function performAction(e){
+function performAction(e)
+{
     const zipCode = document.getElementById('zip').value;
     const cont = document.getElementById('feelings').value;
     getWeather(baseURL,zipCode,apiKey)
-    .then(function(data){
+    .then(function(data)
+    {
         // Add data
         console.log(data);
         postData('/addWeather', {date:newDate, temp: data.main.temp, content:cont} );
@@ -30,54 +32,66 @@ function performAction(e){
 
 
 /* Function to POST data */
-const postData = async ( url = '', data = {})=>{
+const postData = async ( url = '', data = {})=>
+{
     console.log(data);
-      const response = await fetch(url, {
-      method: 'POST', 
-      credentials: 'same-origin',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-     // Body data type must match "Content-Type" header        
-      body: JSON.stringify(data), 
-    });
+      const response = await fetch(url,
+      {
+        method: 'POST', 
+        credentials: 'same-origin',
+        headers: 
+        {
+            'Content-Type': 'application/json',
+        },
+      // Body data type must match "Content-Type" header        
+        body: JSON.stringify(data), 
+      });
 
-      try {
+      try 
+      {
         const newData = await response.json();
         console.log(newData);
         return newData;
-      }catch(error) {
-      console.log("error", error);
+      }catch(error) 
+      {
+        console.log("error", error);
       }
   }
 
 
-/* Function to GET Project Data */
 /* Function to GET Web API Data*/
-const getWeather = async (baseURL, zipcode, key)=>{
+const getWeather = async (baseURL, zipcode, key)=>
+{
 
     const res = await fetch(baseURL+zipcode+key)
-    try {
+    try 
+    {
   
       const data = await res.json();
       console.log(data)
       return data;
-    }  catch(error) {
+    }  
+    catch(error) 
+    {
       console.log("error", error);
       // appropriately handle the error
     }
-  }
+}
 
 //update data in website
-const updateUI = async () => {
+const updateUI = async () => 
+{
     const request = await fetch('/all');
-    try{
+    try
+    {
       const allData = await request.json();
       document.getElementById('date').innerHTML = 'Date is:  '+allData[allData.length-1].date;
       document.getElementById('temp').innerHTML = 'Temperature is:  '+allData[allData.length-1].temp+'  celsius';
       document.getElementById('content').innerHTML = 'Feelings:  '+allData[allData.length-1].content;
   
-    }catch(error){
+    }
+    catch(error)
+    {
       console.log("error", error);
     }
-  }
+}

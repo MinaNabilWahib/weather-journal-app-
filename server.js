@@ -38,8 +38,10 @@ function listening()
 // Post Route
 app.post('/addWeather', addWeather);
 
-function addWeather (req,res){
-    newEntry = {
+function addWeather (req,res)
+{
+    newEntry = 
+    {
       date: req.body.date,
       temp: req.body.temp,
       content: req.body.content
@@ -51,7 +53,8 @@ function addWeather (req,res){
 //get
 app.get('/all',getData)
 
-function getData(req,res){
+function getData(req,res)
+{
   res.send(projectData);
   console.log(projectData);
 }
