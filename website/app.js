@@ -7,7 +7,7 @@ let d = new Date();
 let newDate = d.getMonth()+1+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 // Personal API Key for OpenWeatherMap API
-let apiKey = ',us&appid=0eb764e75bca374ded2f229f3409a303&units=metric';
+const apiKey = ',us&appid=0eb764e75bca374ded2f229f3409a303&units=metric';
 
 
 // Event listener to add function to existing HTML DOM element
@@ -85,9 +85,9 @@ const updateUI = async () =>
     try
     {
       const allData = await request.json();
-      document.getElementById('date').innerHTML = 'Date is:  '+allData[allData.length-1].date;
-      document.getElementById('temp').innerHTML = 'Temperature is:  '+allData[allData.length-1].temp+'  celsius';
-      document.getElementById('content').innerHTML = 'Feelings:  '+allData[allData.length-1].content;
+      document.getElementById('date').innerHTML = 'Date is:  '+allData.date;
+      document.getElementById('temp').innerHTML = 'Temperature is:  '+allData.temp+'  celsius';
+      document.getElementById('content').innerHTML = 'Feelings:  '+allData.content;
   
     }
     catch(error)
