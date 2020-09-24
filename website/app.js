@@ -1,5 +1,5 @@
 /* Global Variables */
-let baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 
 
 // Create a new date instance dynamically with JS
